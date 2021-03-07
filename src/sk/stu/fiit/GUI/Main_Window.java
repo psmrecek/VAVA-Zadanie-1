@@ -36,14 +36,28 @@ public class Main_Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panTables = new javax.swing.JPanel();
+        pnlMain = new javax.swing.JPanel();
+        pnlTables = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCustomers = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblItems = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblInvoices = new javax.swing.JTable();
-        panButtons = new javax.swing.JPanel();
+        pnlAuthor = new javax.swing.JPanel();
+        lblMyName = new javax.swing.JLabel();
+        tfMyName = new javax.swing.JTextField();
+        lblMyStreet = new javax.swing.JLabel();
+        tfMyStreet = new javax.swing.JTextField();
+        lblMyTown = new javax.swing.JLabel();
+        tfMyTown = new javax.swing.JTextField();
+        lblMyPostalCode = new javax.swing.JLabel();
+        tfMyPostalCode = new javax.swing.JTextField();
+        lblDateOfCreation = new javax.swing.JLabel();
+        tfDateOfCreation = new javax.swing.JTextField();
+        lblDate = new javax.swing.JLabel();
+        tfDate = new javax.swing.JTextField();
+        pnlButtons = new javax.swing.JPanel();
         btnNewCustomer = new javax.swing.JButton();
         btnEditCustomer = new javax.swing.JButton();
         btnNewItem = new javax.swing.JButton();
@@ -54,6 +68,8 @@ public class Main_Window extends javax.swing.JFrame {
         menuFile = new javax.swing.JMenu();
         miNewCustomer = new javax.swing.JMenuItem();
         miNewItem = new javax.swing.JMenuItem();
+        miCreateInvoice = new javax.swing.JMenuItem();
+        miShowInvoice = new javax.swing.JMenuItem();
         sepFile = new javax.swing.JPopupMenu.Separator();
         miQuit = new javax.swing.JMenuItem();
         menuEdit = new javax.swing.JMenu();
@@ -61,6 +77,7 @@ public class Main_Window extends javax.swing.JFrame {
         miEditItem = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         miTests = new javax.swing.JMenuItem();
+        sepHelp = new javax.swing.JPopupMenu.Separator();
         miInfo = new javax.swing.JMenuItem();
         miAbout = new javax.swing.JMenuItem();
 
@@ -70,7 +87,9 @@ public class Main_Window extends javax.swing.JFrame {
         setLocationByPlatform(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panTables.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlMain.setLayout(new javax.swing.BoxLayout(pnlMain, javax.swing.BoxLayout.PAGE_AXIS));
+
+        pnlTables.setLayout(new java.awt.GridLayout(3, 0));
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabuľka zákazníkov"));
 
@@ -93,7 +112,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblCustomers);
 
-        panTables.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 630, 130));
+        pnlTables.add(jScrollPane2);
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabuľka tovarov"));
 
@@ -115,7 +134,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblItems);
 
-        panTables.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 630, 120));
+        pnlTables.add(jScrollPane1);
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabuľka faktúr"));
 
@@ -137,11 +156,111 @@ public class Main_Window extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblInvoices);
 
-        panTables.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 630, 120));
+        pnlTables.add(jScrollPane3);
 
-        getContentPane().add(panTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 490));
+        pnlMain.add(pnlTables);
 
-        panButtons.setLayout(new javax.swing.BoxLayout(panButtons, javax.swing.BoxLayout.LINE_AXIS));
+        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder("Údaje o autorovi faktúry a dátumy"));
+        pnlAuthor.setLayout(new java.awt.GridLayout(6, 2));
+
+        lblMyName.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMyName.setText("Meno");
+        pnlAuthor.add(lblMyName);
+
+        tfMyName.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfMyName.setText("Sem zadajte meno autora");
+        tfMyName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfMyNameFocusGained(evt);
+            }
+        });
+        pnlAuthor.add(tfMyName);
+
+        lblMyStreet.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyStreet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMyStreet.setText("Ulica a číslo");
+        pnlAuthor.add(lblMyStreet);
+
+        tfMyStreet.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfMyStreet.setText("Sem zadajte ulicu a číslo autora");
+        tfMyStreet.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfMyStreetFocusGained(evt);
+            }
+        });
+        pnlAuthor.add(tfMyStreet);
+
+        lblMyTown.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyTown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMyTown.setText("Obec");
+        pnlAuthor.add(lblMyTown);
+
+        tfMyTown.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyTown.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfMyTown.setText("Sem zadajte obec autora");
+        tfMyTown.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfMyTownFocusGained(evt);
+            }
+        });
+        pnlAuthor.add(tfMyTown);
+
+        lblMyPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyPostalCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMyPostalCode.setText("PSČ");
+        pnlAuthor.add(lblMyPostalCode);
+
+        tfMyPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyPostalCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfMyPostalCode.setText("Sem zadajte PSČ autora");
+        tfMyPostalCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfMyPostalCodeFocusGained(evt);
+            }
+        });
+        tfMyPostalCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfMyPostalCodeActionPerformed(evt);
+            }
+        });
+        pnlAuthor.add(tfMyPostalCode);
+
+        lblDateOfCreation.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblDateOfCreation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDateOfCreation.setText("Dátum vystavenia");
+        pnlAuthor.add(lblDateOfCreation);
+
+        tfDateOfCreation.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfDateOfCreation.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfDateOfCreation.setText("Sem zadajte dátum vystavenia faktúry");
+        tfDateOfCreation.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDateOfCreationFocusGained(evt);
+            }
+        });
+        pnlAuthor.add(tfDateOfCreation);
+
+        lblDate.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDate.setText("Dátum splatnosti");
+        pnlAuthor.add(lblDate);
+
+        tfDate.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfDate.setText("Sem zadajte dátum splatnosti faktúry");
+        tfDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDateFocusGained(evt);
+            }
+        });
+        pnlAuthor.add(tfDate);
+
+        pnlMain.add(pnlAuthor);
+
+        pnlButtons.setLayout(new javax.swing.BoxLayout(pnlButtons, javax.swing.BoxLayout.LINE_AXIS));
 
         btnNewCustomer.setText("Nový zákazník");
         btnNewCustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +268,7 @@ public class Main_Window extends javax.swing.JFrame {
                 btnNewCustomerActionPerformed(evt);
             }
         });
-        panButtons.add(btnNewCustomer);
+        pnlButtons.add(btnNewCustomer);
 
         btnEditCustomer.setText("Úprava zákazníka");
         btnEditCustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +276,7 @@ public class Main_Window extends javax.swing.JFrame {
                 btnEditCustomerActionPerformed(evt);
             }
         });
-        panButtons.add(btnEditCustomer);
+        pnlButtons.add(btnEditCustomer);
 
         btnNewItem.setText("Nový tovar");
         btnNewItem.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +284,7 @@ public class Main_Window extends javax.swing.JFrame {
                 btnNewItemActionPerformed(evt);
             }
         });
-        panButtons.add(btnNewItem);
+        pnlButtons.add(btnNewItem);
 
         btnEditItem.setText("Úprava tovaru");
         btnEditItem.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +292,7 @@ public class Main_Window extends javax.swing.JFrame {
                 btnEditItemActionPerformed(evt);
             }
         });
-        panButtons.add(btnEditItem);
+        pnlButtons.add(btnEditItem);
 
         btnCreateInvoice.setText("Vytvoriť faktúru");
         btnCreateInvoice.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +300,7 @@ public class Main_Window extends javax.swing.JFrame {
                 btnCreateInvoiceActionPerformed(evt);
             }
         });
-        panButtons.add(btnCreateInvoice);
+        pnlButtons.add(btnCreateInvoice);
 
         btnShowInvoice.setText("Zobraziť faktúru");
         btnShowInvoice.addActionListener(new java.awt.event.ActionListener() {
@@ -189,9 +308,11 @@ public class Main_Window extends javax.swing.JFrame {
                 btnShowInvoiceActionPerformed(evt);
             }
         });
-        panButtons.add(btnShowInvoice);
+        pnlButtons.add(btnShowInvoice);
 
-        getContentPane().add(panButtons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 720, 30));
+        pnlMain.add(pnlButtons);
+
+        getContentPane().add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 700));
 
         menuFile.setText("Súbor");
 
@@ -212,6 +333,24 @@ public class Main_Window extends javax.swing.JFrame {
             }
         });
         menuFile.add(miNewItem);
+
+        miCreateInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        miCreateInvoice.setText("Nová faktúra");
+        miCreateInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCreateInvoiceActionPerformed(evt);
+            }
+        });
+        menuFile.add(miCreateInvoice);
+
+        miShowInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        miShowInvoice.setText("Zobraziť faktúru");
+        miShowInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miShowInvoiceActionPerformed(evt);
+            }
+        });
+        menuFile.add(miShowInvoice);
         menuFile.add(sepFile);
 
         miQuit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -249,6 +388,7 @@ public class Main_Window extends javax.swing.JFrame {
 
         menuHelp.setText("Pomocník");
 
+        miTests.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         miTests.setText("Vzor");
         miTests.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +396,7 @@ public class Main_Window extends javax.swing.JFrame {
             }
         });
         menuHelp.add(miTests);
+        menuHelp.add(sepHelp);
 
         miInfo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         miInfo.setText("Info");
@@ -383,6 +524,58 @@ public class Main_Window extends javax.swing.JFrame {
         
         newInvoice();
     }//GEN-LAST:event_btnCreateInvoiceActionPerformed
+
+    private void miShowInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miShowInvoiceActionPerformed
+        // TODO add your handling code here:
+        
+        showInvoice();
+    }//GEN-LAST:event_miShowInvoiceActionPerformed
+
+    private void miCreateInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCreateInvoiceActionPerformed
+        // TODO add your handling code here:
+        
+        newInvoice();
+    }//GEN-LAST:event_miCreateInvoiceActionPerformed
+
+    private void tfMyPostalCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMyPostalCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfMyPostalCodeActionPerformed
+
+    private void tfMyNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyNameFocusGained
+        // TODO add your handling code here:
+        
+        tfMyName.selectAll();
+    }//GEN-LAST:event_tfMyNameFocusGained
+
+    private void tfMyStreetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyStreetFocusGained
+        // TODO add your handling code here:
+        
+        tfMyStreet.selectAll();
+    }//GEN-LAST:event_tfMyStreetFocusGained
+
+    private void tfMyTownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyTownFocusGained
+        // TODO add your handling code here:
+        
+        tfMyTown.selectAll();
+    }//GEN-LAST:event_tfMyTownFocusGained
+
+    private void tfMyPostalCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyPostalCodeFocusGained
+        // TODO add your handling code here:
+        
+        tfMyPostalCode.selectAll();
+    }//GEN-LAST:event_tfMyPostalCodeFocusGained
+
+    private void tfDateOfCreationFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDateOfCreationFocusGained
+        // TODO add your handling code here:
+        
+        tfDateOfCreation.selectAll();
+    }//GEN-LAST:event_tfDateOfCreationFocusGained
+
+    private void tfDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDateFocusGained
+        // TODO add your handling code here:
+        
+        tfDate.selectAll();
+    }//GEN-LAST:event_tfDateFocusGained
 
     public Lists getLists() {
         return lists;
@@ -557,23 +750,40 @@ public class Main_Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblDateOfCreation;
+    private javax.swing.JLabel lblMyName;
+    private javax.swing.JLabel lblMyPostalCode;
+    private javax.swing.JLabel lblMyStreet;
+    private javax.swing.JLabel lblMyTown;
     private javax.swing.JMenuBar mbMain;
     private javax.swing.JMenu menuEdit;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem miAbout;
+    private javax.swing.JMenuItem miCreateInvoice;
     private javax.swing.JMenuItem miEditCustomer;
     private javax.swing.JMenuItem miEditItem;
     private javax.swing.JMenuItem miInfo;
     private javax.swing.JMenuItem miNewCustomer;
     private javax.swing.JMenuItem miNewItem;
     private javax.swing.JMenuItem miQuit;
+    private javax.swing.JMenuItem miShowInvoice;
     private javax.swing.JMenuItem miTests;
-    private javax.swing.JPanel panButtons;
-    private javax.swing.JPanel panTables;
+    private javax.swing.JPanel pnlAuthor;
+    private javax.swing.JPanel pnlButtons;
+    private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlTables;
     private javax.swing.JPopupMenu.Separator sepFile;
+    private javax.swing.JPopupMenu.Separator sepHelp;
     private javax.swing.JTable tblCustomers;
     private javax.swing.JTable tblInvoices;
     private javax.swing.JTable tblItems;
+    private javax.swing.JTextField tfDate;
+    private javax.swing.JTextField tfDateOfCreation;
+    private javax.swing.JTextField tfMyName;
+    private javax.swing.JTextField tfMyPostalCode;
+    private javax.swing.JTextField tfMyStreet;
+    private javax.swing.JTextField tfMyTown;
     // End of variables declaration//GEN-END:variables
 }
