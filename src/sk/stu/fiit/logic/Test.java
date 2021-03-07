@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public class Test {
     
     public static void customers(Lists lists){
-        lists.createCustomer("a", "a", "a", "a");
-        lists.createCustomer("b", "b", "b", "b");
-        lists.createCustomer("c", "c", "c", "c");
-        lists.createCustomer("d", "d", "d", "d");
+        lists.createCustomer("Alojz Baťalík", "Citrónová 4", "Dunajská Streda", "01234");
+        lists.createCustomer("Emília Fabušová", "Gregorova 22", "Hlohovec", "56789");
+        lists.createCustomer("Ivan Jalový", "Klimentova 7", "Levoča", "10111");
+        lists.createCustomer("Martin Novák", "Onálepkovaná 127", "Prešov", "21314");
     }
     
     public static void items(Lists lists){
-        lists.createItem("z", "z", "1.00");
-        lists.createItem("y", "y", "2,00");
-        lists.createItem("x", "x", "3.00");
+        lists.createItem("Robotický vysávač", "Robotický vysávač na podlahy ovládateľný cez mobilnú aplikáciu", "245.99");
+        lists.createItem("Stôl", "Stôl bukový 90x120cm", "75,04");
+        lists.createItem("Torta", "Torta punčová s ovocím", "23.99");
     }
     
     public static void invoices(Lists lists){
