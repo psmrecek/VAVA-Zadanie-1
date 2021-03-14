@@ -85,8 +85,9 @@ public class ShowInvoice extends javax.swing.JFrame {
         text += "\nFaktúru vystavil" + lb + lb +invoice.invFormatAuthor() + lb;
         text += "\nZákazník" + lb + lb+ invoice.getCustomer().invFormatCustomer() + lb;
         text += "\nTovar" + lb + lb + invoice.invFormatItems() + lb;
-        text += "\nCelková suma" + lb + Double.toString(invoice.getSum_items()) + "€\n";
-        text += "\nDátum vystavenia" + lb + invoice.getDate();
+        text += "\nCelková suma" + lb + invoice.getSum_items_string() + "€\n";
+        text += "\nDátum vystavenia" + lb + invoice.getDateCreation();
+        text += "\nDátum splatnosti" + lb + invoice.getDueDate();
         
         return text;
     }

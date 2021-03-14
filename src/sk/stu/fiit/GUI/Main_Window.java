@@ -6,6 +6,8 @@
 package sk.stu.fiit.GUI;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -35,15 +37,16 @@ public class Main_Window extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         pnlMain = new javax.swing.JPanel();
         pnlTables = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblCustomers = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblItems = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblInvoices = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCustomers = new javax.swing.JTable();
         pnlAuthor = new javax.swing.JPanel();
         lblMyName = new javax.swing.JLabel();
         tfMyName = new javax.swing.JTextField();
@@ -53,10 +56,10 @@ public class Main_Window extends javax.swing.JFrame {
         tfMyTown = new javax.swing.JTextField();
         lblMyPostalCode = new javax.swing.JLabel();
         tfMyPostalCode = new javax.swing.JTextField();
-        lblDateOfCreation = new javax.swing.JLabel();
-        tfDateOfCreation = new javax.swing.JTextField();
-        lblDate = new javax.swing.JLabel();
-        tfDate = new javax.swing.JTextField();
+        lblDateCreation = new javax.swing.JLabel();
+        tfDateCreation = new javax.swing.JTextField();
+        lblDueDate = new javax.swing.JLabel();
+        tfDueDate = new javax.swing.JTextField();
         pnlButtons = new javax.swing.JPanel();
         btnNewCustomer = new javax.swing.JButton();
         btnEditCustomer = new javax.swing.JButton();
@@ -85,15 +88,92 @@ public class Main_Window extends javax.swing.JFrame {
         setTitle("Fakturačný systém");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(760, 790));
+        setPreferredSize(new java.awt.Dimension(760, 790));
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0};
+        layout.rowHeights = new int[] {0};
+        getContentPane().setLayout(layout);
 
-        pnlMain.setLayout(new javax.swing.BoxLayout(pnlMain, javax.swing.BoxLayout.PAGE_AXIS));
+        pnlMain.setMinimumSize(new java.awt.Dimension(740, 710));
+        pnlMain.setPreferredSize(new java.awt.Dimension(750, 710));
+        pnlMain.setLayout(new java.awt.GridBagLayout());
 
-        pnlTables.setLayout(new java.awt.GridLayout(3, 0));
+        pnlTables.setLayout(new java.awt.GridBagLayout());
 
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabuľka zákazníkov"));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka tovarov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 10))); // NOI18N
+        jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(740, 170));
+        jScrollPane1.setOpaque(false);
 
-        tblCustomers.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tblItems.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tblItems.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Názov", "Popis", "Cena", "Množstvo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblItems.setMinimumSize(new java.awt.Dimension(740, 170));
+        tblItems.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblItems);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        pnlTables.add(jScrollPane1, gridBagConstraints);
+
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka faktúr", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 10))); // NOI18N
+        jScrollPane3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(740, 170));
+
+        tblInvoices.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tblInvoices.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Meno", "Dátum vytvorenia", "Dátum splatnosti", "Suma"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblInvoices.setMinimumSize(new java.awt.Dimension(740, 170));
+        tblInvoices.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tblInvoices);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        pnlTables.add(jScrollPane3, gridBagConstraints);
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka zákazníkov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 10))); // NOI18N
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(740, 170));
+
         tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -110,112 +190,125 @@ public class Main_Window extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblCustomers.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblCustomers);
 
-        pnlTables.add(jScrollPane2);
+        pnlTables.add(jScrollPane2, new java.awt.GridBagConstraints());
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabuľka tovarov"));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        pnlMain.add(pnlTables, gridBagConstraints);
 
-        tblItems.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Údaje o autorovi faktúry a dátumy", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 10))); // NOI18N
+        pnlAuthor.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        pnlAuthor.setMinimumSize(new java.awt.Dimension(740, 150));
+        java.awt.GridBagLayout pnlAuthorLayout = new java.awt.GridBagLayout();
+        pnlAuthorLayout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0};
+        pnlAuthorLayout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        pnlAuthor.setLayout(pnlAuthorLayout);
 
-            },
-            new String [] {
-                "Názov", "Popis", "Cena"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblItems);
-
-        pnlTables.add(jScrollPane1);
-
-        jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabuľka faktúr"));
-
-        tblInvoices.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Meno", "Dátum", "Suma"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tblInvoices);
-
-        pnlTables.add(jScrollPane3);
-
-        pnlMain.add(pnlTables);
-
-        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder("Údaje o autorovi faktúry a dátumy"));
-        pnlAuthor.setLayout(new java.awt.GridLayout(6, 2));
-
-        lblMyName.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblMyName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMyName.setText("Meno");
-        pnlAuthor.add(lblMyName);
+        lblMyName.setMinimumSize(new java.awt.Dimension(120, 30));
+        lblMyName.setName(""); // NOI18N
+        lblMyName.setPreferredSize(new java.awt.Dimension(150, 30));
+        lblMyName.setRequestFocusEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        pnlAuthor.add(lblMyName, gridBagConstraints);
 
-        tfMyName.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tfMyName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfMyName.setText("Sem zadajte meno autora");
+        tfMyName.setMinimumSize(new java.awt.Dimension(200, 30));
+        tfMyName.setName(""); // NOI18N
+        tfMyName.setPreferredSize(new java.awt.Dimension(220, 30));
         tfMyName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfMyNameFocusGained(evt);
             }
         });
-        pnlAuthor.add(tfMyName);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        pnlAuthor.add(tfMyName, gridBagConstraints);
 
-        lblMyStreet.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyStreet.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblMyStreet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMyStreet.setText("Ulica a číslo");
-        pnlAuthor.add(lblMyStreet);
+        lblMyStreet.setMinimumSize(new java.awt.Dimension(120, 30));
+        lblMyStreet.setName(""); // NOI18N
+        lblMyStreet.setPreferredSize(new java.awt.Dimension(150, 30));
+        lblMyStreet.setRequestFocusEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        pnlAuthor.add(lblMyStreet, gridBagConstraints);
 
-        tfMyStreet.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyStreet.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tfMyStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfMyStreet.setText("Sem zadajte ulicu a číslo autora");
+        tfMyStreet.setMinimumSize(new java.awt.Dimension(200, 30));
+        tfMyStreet.setName(""); // NOI18N
+        tfMyStreet.setPreferredSize(new java.awt.Dimension(220, 30));
         tfMyStreet.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfMyStreetFocusGained(evt);
             }
         });
-        pnlAuthor.add(tfMyStreet);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        pnlAuthor.add(tfMyStreet, gridBagConstraints);
 
-        lblMyTown.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyTown.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblMyTown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMyTown.setText("Obec");
-        pnlAuthor.add(lblMyTown);
+        lblMyTown.setMinimumSize(new java.awt.Dimension(120, 30));
+        lblMyTown.setName(""); // NOI18N
+        lblMyTown.setPreferredSize(new java.awt.Dimension(150, 30));
+        lblMyTown.setRequestFocusEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        pnlAuthor.add(lblMyTown, gridBagConstraints);
 
-        tfMyTown.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyTown.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tfMyTown.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfMyTown.setText("Sem zadajte obec autora");
+        tfMyTown.setMinimumSize(new java.awt.Dimension(200, 30));
+        tfMyTown.setName(""); // NOI18N
+        tfMyTown.setPreferredSize(new java.awt.Dimension(220, 30));
         tfMyTown.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfMyTownFocusGained(evt);
             }
         });
-        pnlAuthor.add(tfMyTown);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        pnlAuthor.add(tfMyTown, gridBagConstraints);
 
-        lblMyPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblMyPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblMyPostalCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMyPostalCode.setText("PSČ");
-        pnlAuthor.add(lblMyPostalCode);
+        lblMyPostalCode.setMinimumSize(new java.awt.Dimension(120, 30));
+        lblMyPostalCode.setName(""); // NOI18N
+        lblMyPostalCode.setPreferredSize(new java.awt.Dimension(150, 30));
+        lblMyPostalCode.setRequestFocusEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        pnlAuthor.add(lblMyPostalCode, gridBagConstraints);
 
-        tfMyPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tfMyPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tfMyPostalCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfMyPostalCode.setText("Sem zadajte PSČ autora");
+        tfMyPostalCode.setMinimumSize(new java.awt.Dimension(200, 30));
+        tfMyPostalCode.setName(""); // NOI18N
+        tfMyPostalCode.setPreferredSize(new java.awt.Dimension(220, 30));
         tfMyPostalCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfMyPostalCodeFocusGained(evt);
@@ -226,42 +319,79 @@ public class Main_Window extends javax.swing.JFrame {
                 tfMyPostalCodeActionPerformed(evt);
             }
         });
-        pnlAuthor.add(tfMyPostalCode);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        pnlAuthor.add(tfMyPostalCode, gridBagConstraints);
 
-        lblDateOfCreation.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lblDateOfCreation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDateOfCreation.setText("Dátum vystavenia");
-        pnlAuthor.add(lblDateOfCreation);
+        lblDateCreation.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        lblDateCreation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDateCreation.setText("Dátum vystavenia");
+        lblDateCreation.setMinimumSize(new java.awt.Dimension(120, 30));
+        lblDateCreation.setName(""); // NOI18N
+        lblDateCreation.setPreferredSize(new java.awt.Dimension(150, 30));
+        lblDateCreation.setRequestFocusEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        pnlAuthor.add(lblDateCreation, gridBagConstraints);
 
-        tfDateOfCreation.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        tfDateOfCreation.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfDateOfCreation.setText("Sem zadajte dátum vystavenia faktúry");
-        tfDateOfCreation.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfDateCreation.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfDateCreation.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfDateCreation.setText("Sem zadajte dátum vystavenia");
+        tfDateCreation.setMinimumSize(new java.awt.Dimension(200, 30));
+        tfDateCreation.setName(""); // NOI18N
+        tfDateCreation.setPreferredSize(new java.awt.Dimension(220, 30));
+        tfDateCreation.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                tfDateOfCreationFocusGained(evt);
+                tfDateCreationFocusGained(evt);
             }
         });
-        pnlAuthor.add(tfDateOfCreation);
-
-        lblDate.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDate.setText("Dátum splatnosti");
-        pnlAuthor.add(lblDate);
-
-        tfDate.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        tfDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfDate.setText("Sem zadajte dátum splatnosti faktúry");
-        tfDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfDateFocusGained(evt);
+        tfDateCreation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfDateCreationActionPerformed(evt);
             }
         });
-        pnlAuthor.add(tfDate);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
+        pnlAuthor.add(tfDateCreation, gridBagConstraints);
 
-        pnlMain.add(pnlAuthor);
+        lblDueDate.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        lblDueDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDueDate.setText("Dátum splatnosti");
+        lblDueDate.setMinimumSize(new java.awt.Dimension(120, 30));
+        lblDueDate.setName(""); // NOI18N
+        lblDueDate.setPreferredSize(new java.awt.Dimension(150, 30));
+        lblDueDate.setRequestFocusEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        pnlAuthor.add(lblDueDate, gridBagConstraints);
+
+        tfDueDate.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfDueDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfDueDate.setText("Sem zadajte dátum splatnosti");
+        tfDueDate.setMinimumSize(new java.awt.Dimension(200, 30));
+        tfDueDate.setName(""); // NOI18N
+        tfDueDate.setPreferredSize(new java.awt.Dimension(220, 30));
+        tfDueDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDueDateFocusGained(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 4;
+        pnlAuthor.add(tfDueDate, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        pnlMain.add(pnlAuthor, gridBagConstraints);
 
         pnlButtons.setLayout(new javax.swing.BoxLayout(pnlButtons, javax.swing.BoxLayout.LINE_AXIS));
 
+        btnNewCustomer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnNewCustomer.setText("Nový zákazník");
         btnNewCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,6 +400,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         pnlButtons.add(btnNewCustomer);
 
+        btnEditCustomer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEditCustomer.setText("Úprava zákazníka");
         btnEditCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,6 +409,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         pnlButtons.add(btnEditCustomer);
 
+        btnNewItem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnNewItem.setText("Nový tovar");
         btnNewItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,6 +418,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         pnlButtons.add(btnNewItem);
 
+        btnEditItem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEditItem.setText("Úprava tovaru");
         btnEditItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,6 +427,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         pnlButtons.add(btnEditItem);
 
+        btnCreateInvoice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCreateInvoice.setText("Vytvoriť faktúru");
         btnCreateInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +436,7 @@ public class Main_Window extends javax.swing.JFrame {
         });
         pnlButtons.add(btnCreateInvoice);
 
+        btnShowInvoice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnShowInvoice.setText("Zobraziť faktúru");
         btnShowInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,9 +445,20 @@ public class Main_Window extends javax.swing.JFrame {
         });
         pnlButtons.add(btnShowInvoice);
 
-        pnlMain.add(pnlButtons);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        pnlMain.add(pnlButtons, gridBagConstraints);
 
-        getContentPane().add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 700));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        getContentPane().add(pnlMain, gridBagConstraints);
 
         menuFile.setText("Súbor");
 
@@ -465,18 +611,6 @@ public class Main_Window extends javax.swing.JFrame {
         newCustomer();
     }//GEN-LAST:event_miNewCustomerActionPerformed
 
-    private void btnEditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerActionPerformed
-        // TODO add your handling code here:
-        
-        editCustomer();
-    }//GEN-LAST:event_btnEditCustomerActionPerformed
-
-    private void btnEditItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditItemActionPerformed
-        // TODO add your handling code here:
-        
-        editItem();
-    }//GEN-LAST:event_btnEditItemActionPerformed
-
     private void miTestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTestsActionPerformed
         // TODO add your handling code here:
         Test.customers(lists);
@@ -488,18 +622,6 @@ public class Main_Window extends javax.swing.JFrame {
         Test.invoices(lists);
         populateTableOfInvoices();
     }//GEN-LAST:event_miTestsActionPerformed
-
-    private void btnNewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCustomerActionPerformed
-        // TODO add your handling code here:
-        
-        newCustomer();
-    }//GEN-LAST:event_btnNewCustomerActionPerformed
-
-    private void btnNewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewItemActionPerformed
-        // TODO add your handling code here:
-        
-        newItem();
-    }//GEN-LAST:event_btnNewItemActionPerformed
 
     private void miEditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditCustomerActionPerformed
         // TODO add your handling code here:
@@ -513,18 +635,6 @@ public class Main_Window extends javax.swing.JFrame {
         editItem();
     }//GEN-LAST:event_miEditItemActionPerformed
 
-    private void btnShowInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowInvoiceActionPerformed
-        // TODO add your handling code here:
-        
-        showInvoice();
-    }//GEN-LAST:event_btnShowInvoiceActionPerformed
-
-    private void btnCreateInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateInvoiceActionPerformed
-        // TODO add your handling code here:
-        
-        newInvoice();
-    }//GEN-LAST:event_btnCreateInvoiceActionPerformed
-
     private void miShowInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miShowInvoiceActionPerformed
         // TODO add your handling code here:
         
@@ -537,45 +647,85 @@ public class Main_Window extends javax.swing.JFrame {
         newInvoice();
     }//GEN-LAST:event_miCreateInvoiceActionPerformed
 
+    private void btnShowInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowInvoiceActionPerformed
+        // TODO add your handling code here:
+
+        showInvoice();
+    }//GEN-LAST:event_btnShowInvoiceActionPerformed
+
+    private void btnCreateInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateInvoiceActionPerformed
+        // TODO add your handling code here:
+
+        newInvoice();
+    }//GEN-LAST:event_btnCreateInvoiceActionPerformed
+
+    private void btnEditItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditItemActionPerformed
+        // TODO add your handling code here:
+
+        editItem();
+    }//GEN-LAST:event_btnEditItemActionPerformed
+
+    private void btnNewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewItemActionPerformed
+        // TODO add your handling code here:
+
+        newItem();
+    }//GEN-LAST:event_btnNewItemActionPerformed
+
+    private void btnEditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerActionPerformed
+        // TODO add your handling code here:
+
+        editCustomer();
+    }//GEN-LAST:event_btnEditCustomerActionPerformed
+
+    private void btnNewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCustomerActionPerformed
+        // TODO add your handling code here:
+
+        newCustomer();
+    }//GEN-LAST:event_btnNewCustomerActionPerformed
+
+    private void tfDueDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDueDateFocusGained
+        // TODO add your handling code here:
+
+        tfDueDate.selectAll();
+    }//GEN-LAST:event_tfDueDateFocusGained
+
+    private void tfDateCreationFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDateCreationFocusGained
+        // TODO add your handling code here:
+
+        tfDateCreation.selectAll();
+    }//GEN-LAST:event_tfDateCreationFocusGained
+
     private void tfMyPostalCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMyPostalCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfMyPostalCodeActionPerformed
 
-    private void tfMyNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyNameFocusGained
-        // TODO add your handling code here:
-        
-        tfMyName.selectAll();
-    }//GEN-LAST:event_tfMyNameFocusGained
-
-    private void tfMyStreetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyStreetFocusGained
-        // TODO add your handling code here:
-        
-        tfMyStreet.selectAll();
-    }//GEN-LAST:event_tfMyStreetFocusGained
-
-    private void tfMyTownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyTownFocusGained
-        // TODO add your handling code here:
-        
-        tfMyTown.selectAll();
-    }//GEN-LAST:event_tfMyTownFocusGained
-
     private void tfMyPostalCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyPostalCodeFocusGained
         // TODO add your handling code here:
-        
+
         tfMyPostalCode.selectAll();
     }//GEN-LAST:event_tfMyPostalCodeFocusGained
 
-    private void tfDateOfCreationFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDateOfCreationFocusGained
+    private void tfMyTownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyTownFocusGained
         // TODO add your handling code here:
-        
-        tfDateOfCreation.selectAll();
-    }//GEN-LAST:event_tfDateOfCreationFocusGained
 
-    private void tfDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDateFocusGained
+        tfMyTown.selectAll();
+    }//GEN-LAST:event_tfMyTownFocusGained
+
+    private void tfMyStreetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyStreetFocusGained
         // TODO add your handling code here:
-        
-        tfDate.selectAll();
-    }//GEN-LAST:event_tfDateFocusGained
+
+        tfMyStreet.selectAll();
+    }//GEN-LAST:event_tfMyStreetFocusGained
+
+    private void tfMyNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMyNameFocusGained
+        // TODO add your handling code here:
+
+        tfMyName.selectAll();
+    }//GEN-LAST:event_tfMyNameFocusGained
+
+    private void tfDateCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDateCreationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfDateCreationActionPerformed
 
     public Lists getLists() {
         return lists;
@@ -596,7 +746,7 @@ public class Main_Window extends javax.swing.JFrame {
     
     
     public void populateTableOfCustomers(){
-        
+        System.out.println("Table Customers");
         DefaultTableModel model = (DefaultTableModel) tblCustomers.getModel();
         deleteRows(model);
         
@@ -639,8 +789,9 @@ public class Main_Window extends javax.swing.JFrame {
         for (int i = 0; i < listOfInvoices.size(); i++) {
             
             rowData[0] = listOfInvoices.get(i).getCustomer().getName();
-            rowData[1] = listOfInvoices.get(i).getDate();
-            rowData[2] = Double.toString(listOfInvoices.get(i).getSum_items());
+            rowData[1] = listOfInvoices.get(i).getDateCreation();
+            rowData[2] = listOfInvoices.get(i).getDueDate();
+            rowData[3] = listOfInvoices.get(i).getSum_items_string();
             model.addRow(rowData);
         }
     }
@@ -653,6 +804,19 @@ public class Main_Window extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, 
                     "Nie je vybraná žiadna položka z tabuľky", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+        }
+        return -1;
+    }
+    
+    public int getRow(JTable table, String message){
+        int index = table.getSelectedRow();
+        
+        if(InputSanitizer.isPositiveInt(index)){
+            return index;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, 
+                    message, 
                     "Chyba!", JOptionPane.ERROR_MESSAGE);
         }
         return -1;
@@ -685,13 +849,58 @@ public class Main_Window extends javax.swing.JFrame {
         int index = getRow(tblItems);
         if (InputSanitizer.isPositiveInt(index)){
             
-        AddItem frmAI = new AddItem(this, this.lists, index);
-        frmAI.setVisible(true);
+            AddItem frmAI = new AddItem(this, this.lists, index);
+            frmAI.setVisible(true);
         }
     }
     
     public void newInvoice(){
-        System.out.println("TBA");
+        
+        int indexCustomer = getRow(tblCustomers, "Nie je vybraný žiaden zákazník z tabuľky");
+        Customer customer;
+        if (InputSanitizer.isPositiveInt(indexCustomer)){
+            customer = lists.getCustomer(indexCustomer);
+        } else{
+            return;
+        }
+        
+        ArrayList<Item> subListOfItems = new ArrayList<Item>();
+        ArrayList<Integer> listOfQty = new ArrayList<Integer>();
+        String dateCreation = tfDateCreation.getText();
+        String dueDate = tfDueDate.getText();
+        String name = tfMyName.getText();
+        String street = tfMyStreet.getText();
+        String postal_code = tfMyPostalCode.getText();
+        String town =  tfMyTown.getText();
+        
+        DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            Object quantityObj = model.getValueAt(i, 3);
+ 
+            try {
+                int quantity = InputSanitizer.validQuantity(quantityObj);
+                if(quantity > 0){
+                    subListOfItems.add(lists.getItem(i));
+                    listOfQty.add(quantity);
+                }
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane, 
+                    "Hodnota v stĺpci Množstvo v tabuľke tovarov môže byť len celé kladné číslo a nula", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        
+        if(subListOfItems.size() == 0){
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Aspoň jeden tovar musí mať nenulové množstvo", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+        } else{
+            lists.creaiteInvoice(dateCreation, dueDate, customer, subListOfItems, listOfQty, name, street, town, postal_code);
+            populateTableOfInvoices();
+            
+        }
     }
     
     public void showInvoice(){
@@ -750,8 +959,8 @@ public class Main_Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblDateOfCreation;
+    private javax.swing.JLabel lblDateCreation;
+    private javax.swing.JLabel lblDueDate;
     private javax.swing.JLabel lblMyName;
     private javax.swing.JLabel lblMyPostalCode;
     private javax.swing.JLabel lblMyStreet;
@@ -779,8 +988,8 @@ public class Main_Window extends javax.swing.JFrame {
     private javax.swing.JTable tblCustomers;
     private javax.swing.JTable tblInvoices;
     private javax.swing.JTable tblItems;
-    private javax.swing.JTextField tfDate;
-    private javax.swing.JTextField tfDateOfCreation;
+    private javax.swing.JTextField tfDateCreation;
+    private javax.swing.JTextField tfDueDate;
     private javax.swing.JTextField tfMyName;
     private javax.swing.JTextField tfMyPostalCode;
     private javax.swing.JTextField tfMyStreet;

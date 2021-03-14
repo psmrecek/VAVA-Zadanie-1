@@ -106,12 +106,12 @@ public class Lists {
     
     
     
-    public boolean creaiteInvoice(String date, Customer customer, 
+    public boolean creaiteInvoice(String dateCreation, String dueDate, Customer customer, 
             ArrayList<Item> subListOfItems, ArrayList<Integer> listOfQty, 
             String name, String street, String town, String postal_code){
         
         try {
-            Invoice invoice = new Invoice(date, customer, subListOfItems, 
+            Invoice invoice = new Invoice(dateCreation, dueDate, customer, subListOfItems, 
                     listOfQty, name, street, town, postal_code);
             listOfInvoices.add(invoice);
             return true;

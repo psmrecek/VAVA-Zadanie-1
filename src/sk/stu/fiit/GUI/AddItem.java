@@ -55,13 +55,12 @@ public class AddItem extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        pnlTitle = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
         pnlButtons = new javax.swing.JPanel();
         btnOK = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        pnlFields = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
         lblDescription = new javax.swing.JLabel();
@@ -73,12 +72,10 @@ public class AddItem extends javax.swing.JFrame {
         setTitle("Tovar");
         setMinimumSize(new java.awt.Dimension(500, 300));
         setPreferredSize(new java.awt.Dimension(500, 300));
-
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTitle.setText("Tovar");
-        pnlTitle.add(lblTitle);
-
-        getContentPane().add(pnlTitle, java.awt.BorderLayout.PAGE_START);
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        getContentPane().setLayout(layout);
 
         btnOK.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnOK.setText("OK");
@@ -98,51 +95,89 @@ public class AddItem extends javax.swing.JFrame {
         });
         pnlButtons.add(btnCancel);
 
-        getContentPane().add(pnlButtons, java.awt.BorderLayout.PAGE_END);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(pnlButtons, gridBagConstraints);
 
-        pnlFields.setLayout(new java.awt.GridLayout(4, 2, 10, 10));
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTitle.setText("Tovar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        getContentPane().add(lblTitle, gridBagConstraints);
 
         lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblName.setText("Názov tovaru");
-        pnlFields.add(lblName);
+        lblName.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(lblName, gridBagConstraints);
 
         tfName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tfName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfName.setText("Sem zadajte názov tovaru");
-        tfName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNameActionPerformed(evt);
+        tfName.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNameFocusGained(evt);
             }
         });
-        pnlFields.add(tfName);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(tfName, gridBagConstraints);
 
         lblDescription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDescription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescription.setText("Popis tovaru");
-        pnlFields.add(lblDescription);
+        lblDescription.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(lblDescription, gridBagConstraints);
 
         tfDescription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tfDescription.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfDescription.setText("Sem zadajte popis tovaru");
-        pnlFields.add(tfDescription);
+        tfDescription.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfDescription.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDescriptionFocusGained(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(tfDescription, gridBagConstraints);
 
         lblPrice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPrice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrice.setText("Cena");
-        pnlFields.add(lblPrice);
+        lblPrice.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(lblPrice, gridBagConstraints);
 
         tfPrice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tfPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfPrice.setText("Sem zadajte cenu tovaru");
-        tfPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPriceActionPerformed(evt);
+        tfPrice.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfPrice.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPriceFocusGained(evt);
             }
         });
-        pnlFields.add(tfPrice);
-
-        getContentPane().add(pnlFields, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(tfPrice, gridBagConstraints);
 
         getAccessibleContext().setAccessibleName("");
 
@@ -176,13 +211,20 @@ public class AddItem extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnOKActionPerformed
 
-    private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
+    private void tfNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNameFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfNameActionPerformed
+        tfName.selectAll();
+    }//GEN-LAST:event_tfNameFocusGained
 
-    private void tfPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPriceActionPerformed
+    private void tfDescriptionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDescriptionFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfPriceActionPerformed
+        tfDescription.selectAll();
+    }//GEN-LAST:event_tfDescriptionFocusGained
+
+    private void tfPriceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPriceFocusGained
+        // TODO add your handling code here:
+        tfPrice.selectAll();
+    }//GEN-LAST:event_tfPriceFocusGained
 
     /**
      * @param args the command line arguments
@@ -230,8 +272,6 @@ public class AddItem extends javax.swing.JFrame {
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlButtons;
-    private javax.swing.JPanel pnlFields;
-    private javax.swing.JPanel pnlTitle;
     private javax.swing.JTextField tfDescription;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPrice;

@@ -54,13 +54,13 @@ public class Test {
         String town = "Trenčín";
         String postal_code = "01234";
         
-        lists.creaiteInvoice("1.2.2021", lists.getCustomer(0), 
+        lists.creaiteInvoice("1.2.2021", "1.2.2022", lists.getCustomer(0), 
                 items1, qty1, name, street, town, postal_code);
         
-        lists.creaiteInvoice("3.4.2021", lists.getCustomer(1), 
+        lists.creaiteInvoice("3.4.2021", "3.4.2022", lists.getCustomer(1), 
                 items2, qty2, name, street, town, postal_code);
         
-        lists.creaiteInvoice("5.6.2021", lists.getCustomer(2), 
+        lists.creaiteInvoice("5.6.2021", "5.6.2022", lists.getCustomer(2), 
                 items3, qty3, name, street, town, postal_code);
     }
 }

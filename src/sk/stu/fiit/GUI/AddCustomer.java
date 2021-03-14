@@ -56,13 +56,9 @@ public class AddCustomer extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        pnlTitle = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
-        pnlButtons = new javax.swing.JPanel();
-        btnOK = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        pnlFields = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
         lblStreet = new javax.swing.JLabel();
@@ -71,17 +67,119 @@ public class AddCustomer extends javax.swing.JFrame {
         tfTown = new javax.swing.JTextField();
         lblPostalCode = new javax.swing.JLabel();
         tfPostalCode = new javax.swing.JTextField();
+        pnlButtons = new javax.swing.JPanel();
+        btnOK = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Zákazník");
         setMinimumSize(new java.awt.Dimension(500, 300));
         setPreferredSize(new java.awt.Dimension(500, 300));
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0};
+        layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
+        getContentPane().setLayout(layout);
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTitle.setText("Zákazník");
-        pnlTitle.add(lblTitle);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        getContentPane().add(lblTitle, gridBagConstraints);
 
-        getContentPane().add(pnlTitle, java.awt.BorderLayout.PAGE_START);
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblName.setText("Meno a priezvisko");
+        lblName.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(lblName, gridBagConstraints);
+
+        tfName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfName.setText("Sem zadajte meno");
+        tfName.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNameFocusGained(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(tfName, gridBagConstraints);
+
+        lblStreet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblStreet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStreet.setText("Adresa a číslo");
+        lblStreet.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(lblStreet, gridBagConstraints);
+
+        tfStreet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfStreet.setText("Sem zadajte ulicu a číslo");
+        tfStreet.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfStreet.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfStreetFocusGained(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(tfStreet, gridBagConstraints);
+
+        lblTown.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTown.setText("Obec");
+        lblTown.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(lblTown, gridBagConstraints);
+
+        tfTown.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfTown.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfTown.setText("Sem zadajte obec");
+        tfTown.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfTown.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfTownFocusGained(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(tfTown, gridBagConstraints);
+
+        lblPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPostalCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPostalCode.setText("PSČ");
+        lblPostalCode.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        getContentPane().add(lblPostalCode, gridBagConstraints);
+
+        tfPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfPostalCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfPostalCode.setText("Sem zadajte PSČ");
+        tfPostalCode.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfPostalCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPostalCodeFocusGained(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        getContentPane().add(tfPostalCode, gridBagConstraints);
 
         btnOK.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnOK.setText("OK");
@@ -101,51 +199,11 @@ public class AddCustomer extends javax.swing.JFrame {
         });
         pnlButtons.add(btnCancel);
 
-        getContentPane().add(pnlButtons, java.awt.BorderLayout.PAGE_END);
-
-        pnlFields.setLayout(new java.awt.GridLayout(4, 2, 10, 10));
-
-        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblName.setText("Meno a priezvisko");
-        pnlFields.add(lblName);
-
-        tfName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfName.setText("Sem zadajte meno");
-        pnlFields.add(tfName);
-
-        lblStreet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblStreet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStreet.setText("Adresa a číslo");
-        pnlFields.add(lblStreet);
-
-        tfStreet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfStreet.setText("Sem zadajte ulicu a číslo");
-        pnlFields.add(tfStreet);
-
-        lblTown.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTown.setText("Obec");
-        pnlFields.add(lblTown);
-
-        tfTown.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfTown.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfTown.setText("Sem zadajte obec");
-        pnlFields.add(tfTown);
-
-        lblPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPostalCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPostalCode.setText("PSČ");
-        pnlFields.add(lblPostalCode);
-
-        tfPostalCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfPostalCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfPostalCode.setText("Sem zadajte PSČ");
-        pnlFields.add(tfPostalCode);
-
-        getContentPane().add(pnlFields, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(pnlButtons, gridBagConstraints);
 
         getAccessibleContext().setAccessibleName("");
 
@@ -178,6 +236,26 @@ public class AddCustomer extends javax.swing.JFrame {
                     "Chyba!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnOKActionPerformed
+
+    private void tfNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNameFocusGained
+        // TODO add your handling code here:
+        tfName.selectAll();
+    }//GEN-LAST:event_tfNameFocusGained
+
+    private void tfStreetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfStreetFocusGained
+        // TODO add your handling code here:
+        tfStreet.selectAll();
+    }//GEN-LAST:event_tfStreetFocusGained
+
+    private void tfTownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTownFocusGained
+        // TODO add your handling code here:
+        tfTown.selectAll();
+    }//GEN-LAST:event_tfTownFocusGained
+
+    private void tfPostalCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPostalCodeFocusGained
+        // TODO add your handling code here:
+        tfPostalCode.selectAll();
+    }//GEN-LAST:event_tfPostalCodeFocusGained
 
     /**
      * @param args the command line arguments
@@ -225,8 +303,6 @@ public class AddCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTown;
     private javax.swing.JPanel pnlButtons;
-    private javax.swing.JPanel pnlFields;
-    private javax.swing.JPanel pnlTitle;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPostalCode;
     private javax.swing.JTextField tfStreet;

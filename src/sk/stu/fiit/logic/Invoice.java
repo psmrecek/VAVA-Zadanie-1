@@ -5,6 +5,7 @@
  */
 package sk.stu.fiit.logic;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,8 @@ import java.util.ArrayList;
  */
 public class Invoice {
     
-    private String date;
+    private String dateCreation;
+    private String dueDate;
     private Customer customer;
     private ArrayList<Item> listOfItems;
     private ArrayList<Integer> listOfQty;
@@ -22,11 +24,13 @@ public class Invoice {
     private String my_town;
     private String my_postal_code;
     private double sum_items = 0.0;
-
-    public Invoice(String date, Customer customer, ArrayList<Item> listOfItems, 
+    private static DecimalFormat df = new DecimalFormat("0.00");
+    
+    public Invoice(String dateCreation, String dueDate, Customer customer, ArrayList<Item> listOfItems, 
             ArrayList<Integer> listOfQty, String name, String street, 
             String town, String postal_code) {
-        this.date = date;
+        this.dateCreation = dateCreation;
+        this.dueDate = dueDate;
         this.customer = customer;
         this.listOfItems = listOfItems;
         this.listOfQty = listOfQty;
@@ -43,7 +47,7 @@ public class Invoice {
     
     public String invFormatAuthor(){
         String lb = "\n";
-        String text = my_name + lb + my_street + lb + my_town + lb + my_postal_code;
+        String text = getMy_name() + lb + getMy_street() + lb + getMy_town() + lb + getMy_postal_code();
         
         return text;
     }
@@ -52,87 +56,55 @@ public class Invoice {
         String lb = "\n";
         String text = "";
         
-        for (int i = 0; i < listOfItems.size(); i++) {
-            text += listOfItems.get(i).invFormatItem() + 
-                    "€\t" + Integer.toString(listOfQty.get(i)) + "ks\n";
+        for (int i = 0; i < getListOfItems().size(); i++) {
+            text += getListOfItems().get(i).invFormatItem() + 
+                    "€\t" + Integer.toString(getListOfQty().get(i)) + "ks\n";
         }
         
         return text;
     }
-    
-    public String getMy_postal_code() {
-        return my_postal_code;
+
+    public String getDateCreation() {
+        return dateCreation;
     }
 
-    public void setMy_postal_code(String my_postal_code) {
-        this.my_postal_code = my_postal_code;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public String getDueDate() {
+        return dueDate;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public ArrayList<Item> getListOfItems() {
         return listOfItems;
-    }
-
-    public void setListOfItems(ArrayList<Item> listOfItems) {
-        this.listOfItems = listOfItems;
     }
 
     public ArrayList<Integer> getListOfQty() {
         return listOfQty;
     }
 
-    public void setListOfQty(ArrayList<Integer> listOfQty) {
-        this.listOfQty = listOfQty;
-    }
-
     public String getMy_name() {
         return my_name;
-    }
-
-    public void setMy_name(String my_name) {
-        this.my_name = my_name;
     }
 
     public String getMy_street() {
         return my_street;
     }
 
-    public void setMy_street(String my_street) {
-        this.my_street = my_street;
-    }
-
     public String getMy_town() {
         return my_town;
     }
 
-    public void setMy_town(String my_town) {
-        this.my_town = my_town;
+    public String getMy_postal_code() {
+        return my_postal_code;
     }
 
     public double getSum_items() {
         return sum_items;
     }
-
-    public void setSum_items(double sum_items) {
-        this.sum_items = sum_items;
+    
+    public String getSum_items_string(){
+        return df.format(sum_items);
     }
-    
-    
-    
-    
 }
