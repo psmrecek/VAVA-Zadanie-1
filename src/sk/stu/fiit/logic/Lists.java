@@ -23,12 +23,6 @@ public class Lists {
     }
     
     public boolean createCustomer(String name, String street, String town, String postal_code){
-        System.out.println("Vytvaram zakaznika");
-        System.out.println("name = " + name);
-        System.out.println("street = " + street);
-        System.out.println("town = " + town);
-        System.out.println("postal_code = " + postal_code);
-
         try {
             Customer customer = new Customer(name, street, town, postal_code);
             listOfCustomers.add(customer);
@@ -38,12 +32,11 @@ public class Lists {
         }
     }
     
-    public void printCustomers(){
-        System.out.println("Vypisujem vsetkych zakaznikov");
-        for (Customer listOfCustomer : listOfCustomers) {
-            System.out.println(listOfCustomer.getName());
-        }
-    }
+//    public void printCustomers(){
+//        for (Customer listOfCustomer : listOfCustomers) {
+//            System.out.println(listOfCustomer.getName());
+//        }
+//    }
     
     public Customer getCustomer(int index){
         Customer customer = listOfCustomers.get(index);
@@ -61,11 +54,6 @@ public class Lists {
     
     
     public boolean createItem(String name, String description, String price){
-        System.out.println("Vytvaram tovar");
-        System.out.println("name = " + name);
-        System.out.println("description = " + description);
-        System.out.println("price = " + price);
-        
         double price_double = 0.0;
         
         try {
@@ -84,12 +72,11 @@ public class Lists {
         }
     }
     
-    public void printItems(){
-        System.out.println("Vypisujem vsetky tovary");
-        for (Item listOfItem : listOfItems) {
-            System.out.println(listOfItem.getName());
-        }
-    }
+//    public void printItems(){
+//        for (Item listOfItem : listOfItems) {
+//            System.out.println(listOfItem.getName());
+//        }
+//    }
     
     public Item getItem(int index){
         Item item = listOfItems.get(index);

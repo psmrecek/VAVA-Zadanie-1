@@ -6,12 +6,9 @@
 package sk.stu.fiit.GUI;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import sk.stu.fiit.logic.Customer;
 import sk.stu.fiit.logic.InputSanitizer;
 import sk.stu.fiit.logic.*;
@@ -79,8 +76,6 @@ public class Main_Window extends javax.swing.JFrame {
         miEditCustomer = new javax.swing.JMenuItem();
         miEditItem = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
-        miTests = new javax.swing.JMenuItem();
-        sepHelp = new javax.swing.JPopupMenu.Separator();
         miInfo = new javax.swing.JMenuItem();
         miAbout = new javax.swing.JMenuItem();
 
@@ -534,18 +529,8 @@ public class Main_Window extends javax.swing.JFrame {
 
         menuHelp.setText("Pomocník");
 
-        miTests.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        miTests.setText("Vzor");
-        miTests.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miTestsActionPerformed(evt);
-            }
-        });
-        menuHelp.add(miTests);
-        menuHelp.add(sepHelp);
-
         miInfo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        miInfo.setText("Info");
+        miInfo.setText("Návod");
         miInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miInfoActionPerformed(evt);
@@ -610,18 +595,6 @@ public class Main_Window extends javax.swing.JFrame {
         
         newCustomer();
     }//GEN-LAST:event_miNewCustomerActionPerformed
-
-    private void miTestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTestsActionPerformed
-        // TODO add your handling code here:
-        Test.customers(lists);
-        populateTableOfCustomers();
-        
-        Test.items(lists);
-        populateTableOfItems();
-        
-        Test.invoices(lists);
-        populateTableOfInvoices();
-    }//GEN-LAST:event_miTestsActionPerformed
 
     private void miEditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditCustomerActionPerformed
         // TODO add your handling code here:
@@ -746,7 +719,6 @@ public class Main_Window extends javax.swing.JFrame {
     
     
     public void populateTableOfCustomers(){
-        System.out.println("Table Customers");
         DefaultTableModel model = (DefaultTableModel) tblCustomers.getModel();
         deleteRows(model);
         
@@ -774,7 +746,7 @@ public class Main_Window extends javax.swing.JFrame {
             
             rowData[0] = listOfItems.get(i).getName();
             rowData[1] = listOfItems.get(i).getDescription();
-            rowData[2] = Double.toString(listOfItems.get(i).getPrice());
+            rowData[2] = listOfItems.get(i).getPrice_string();
             model.addRow(rowData);
         }
     }
@@ -830,7 +802,7 @@ public class Main_Window extends javax.swing.JFrame {
     
     public void editCustomer(){
         
-        int index = getRow(tblCustomers);
+        int index = getRow(tblCustomers, "Nie je vybraný žiaden zákazník z tabuľky");
         if (InputSanitizer.isPositiveInt(index)){
             
             AddCustomer frmAC = new AddCustomer(this, this.lists, index);
@@ -846,7 +818,7 @@ public class Main_Window extends javax.swing.JFrame {
     
     public void editItem(){
         
-        int index = getRow(tblItems);
+        int index = getRow(tblItems, "Nie je vybraný žiaden tovar z tabuľky");
         if (InputSanitizer.isPositiveInt(index)){
             
             AddItem frmAI = new AddItem(this, this.lists, index);
@@ -872,6 +844,23 @@ public class Main_Window extends javax.swing.JFrame {
         String street = tfMyStreet.getText();
         String postal_code = tfMyPostalCode.getText();
         String town =  tfMyTown.getText();
+        
+        if(InputSanitizer.emptyString(name) || 
+                InputSanitizer.emptyString(street) || 
+                InputSanitizer.emptyString(town) || 
+                InputSanitizer.emptyString(postal_code)){
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Žiadne pole z údajov o autorovi faktúry nesmie zostať prázdne!", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!(InputSanitizer.validDate(dateCreation)) || !(InputSanitizer.validDate(dueDate))){
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Zadávaný dátum musí byť vo formáte \"dd.mm.yyyy\"!", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         DefaultTableModel model = (DefaultTableModel) tblItems.getModel();
         for (int i = 0; i < model.getRowCount(); i++) {
@@ -978,13 +967,11 @@ public class Main_Window extends javax.swing.JFrame {
     private javax.swing.JMenuItem miNewItem;
     private javax.swing.JMenuItem miQuit;
     private javax.swing.JMenuItem miShowInvoice;
-    private javax.swing.JMenuItem miTests;
     private javax.swing.JPanel pnlAuthor;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlTables;
     private javax.swing.JPopupMenu.Separator sepFile;
-    private javax.swing.JPopupMenu.Separator sepHelp;
     private javax.swing.JTable tblCustomers;
     private javax.swing.JTable tblInvoices;
     private javax.swing.JTable tblItems;

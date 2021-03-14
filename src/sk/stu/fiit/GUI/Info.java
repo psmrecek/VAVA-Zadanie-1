@@ -40,6 +40,7 @@ public class Info extends javax.swing.JFrame {
 
         tpInfo.setEditable(false);
         tpInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tpInfo.setText("Postup vytvorenia faktúry:\n1. Vytvorte zákazníka vyplnením údajov v samostatnom okne po stlačení príslušného tlačidla\n2. Vytvorte tovar/ tovary vyplnením údajov v samostatnom okne po stlačení príslušného tlačidla\n3. Zadajte tovaru/ tovarom množstvo v príslušnom stĺpci tabuľky (nezabudnite každú hodnotu potvrdiť Enter)\n4. Zadajte údaje o autorovi faktúry a dátumy vytvorenia a splatnosti\n5. Vytvorte faktúru stlačením príslušného tlačidla\n\nPostup úpravy zákazníka:\n1. Vyberte zákazníka z tabuľky\n2. Upravte zákazníka v novootvorenom okne a potvrďte tlačidlom OK\n\nPostup úpravy tovaru:\n1. Vyberte tovar z tabuľky\n2. Upravte tovar v novootvorenom okne a potvrďte tlačidlom OK\n\nPostup zobrazenia fakúry:\n1. Vyberte faktúru z tabuľky\n2. Zobrazte faktúru stlačením príslušného tlačidla"); // NOI18N
         jScrollPane1.setViewportView(tpInfo);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -52,7 +53,7 @@ public class Info extends javax.swing.JFrame {
         });
         jPanel1.add(btnOK, java.awt.BorderLayout.PAGE_END);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 470));
 
         pack();
         setLocationRelativeTo(null);

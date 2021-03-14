@@ -6,6 +6,7 @@
 package sk.stu.fiit.GUI;
 
 import javax.swing.JOptionPane;
+import sk.stu.fiit.logic.InputSanitizer;
 import sk.stu.fiit.logic.Lists;
 
 /**
@@ -193,6 +194,23 @@ public class AddItem extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
+        
+        String priceString = tfPrice.getText();
+        
+        if(!(InputSanitizer.validPriceFromString(priceString))){
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Cena tovaru môže byť iba číslo väčšie alebo rovné 0!", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(InputSanitizer.emptyString(tfName.getText()) || 
+                InputSanitizer.emptyString(tfDescription.getText())){
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Žiadne pole nesmie zostať prázdne!", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         boolean success = lists.createItem(tfName.getText(), 
                 tfDescription.getText(), tfPrice.getText());

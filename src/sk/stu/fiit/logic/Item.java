@@ -5,6 +5,8 @@
  */
 package sk.stu.fiit.logic;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author PeterSmrecek
@@ -14,6 +16,7 @@ public class Item {
     private String name;
     private String description;
     private Double price;
+    private static DecimalFormat df = new DecimalFormat("0.00");
 
     public Item(String name, String description, Double price) {
         this.name = name;
@@ -29,6 +32,10 @@ public class Item {
     
     public Double getPrice() {
         return price;
+    }
+    
+    public String getPrice_string(){
+        return df.format(price);
     }
 
     public void setPrice(Double price) {

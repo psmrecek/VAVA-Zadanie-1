@@ -6,6 +6,7 @@
 package sk.stu.fiit.GUI;
 
 import javax.swing.JOptionPane;
+import sk.stu.fiit.logic.InputSanitizer;
 import sk.stu.fiit.logic.Lists;
 
 /**
@@ -219,6 +220,18 @@ public class AddCustomer extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
+        
+        
+        if(InputSanitizer.emptyString(tfName.getText()) || 
+                InputSanitizer.emptyString(tfStreet.getText()) || 
+                InputSanitizer.emptyString(tfTown.getText()) || 
+                InputSanitizer.emptyString(tfPostalCode.getText())){
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Žiadne pole nesmie zostať prázdne!", 
+                    "Chyba!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         
         boolean success = this.lists.createCustomer(tfName.getText(), 
                 tfStreet.getText(), tfTown.getText(), tfPostalCode.getText());

@@ -5,6 +5,9 @@
  */
 package sk.stu.fiit.logic;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author PeterSmrecek
@@ -45,4 +48,34 @@ public class InputSanitizer {
         throw new Exception("Wrong quantity");
     }
     
+    public static boolean validPriceFromString(String priceString){
+        double price;
+        
+        try {
+            priceString = priceString.replace(",", ".");
+            price = Double.parseDouble(priceString);
+        } catch (Exception e) {
+            return false;
+        }
+        
+        if(price < 0.0){
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
+    public static boolean emptyString(String string){
+        return string.length() == 0;
+    } 
+    
+    public static boolean validDate(String string){
+        try {
+            Date date = new SimpleDateFormat("dd.mm.yyyy").parse(string);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
